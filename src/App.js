@@ -5,7 +5,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      todoList: [],
+      todoList: [{ text: 'First Task', taskCheck: true }],
       todoInput: ''
     }
   }
@@ -20,7 +20,7 @@ class App extends Component {
     e.preventDefault()
     if (this.state.todoInput !== '') {
       this.setState({
-        todoList: [...this.state.todoList, this.state.todoInput],
+        todoList: [...this.state.todoList, { text: this.state.todoInput, taskCheck: false }],
         todoInput: ''
       })
     }
@@ -39,7 +39,7 @@ class App extends Component {
         <button onClick={this.onSubmit}>Add</button>
         <div className='todo-list'>
           <ul className='list'>
-            {todoList.map((todo, index) => <li key={index}>{todo}</li>)}
+            {todoList.map((todo, index) => todo.taskCheck ? <li key={index} className="is-checked">{todo.text}</li> : <li key={index}>{todo.text}</li>)}
           </ul>
         </div>
       </div>
