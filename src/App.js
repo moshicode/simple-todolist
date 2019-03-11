@@ -25,13 +25,19 @@ class App extends Component {
   }
 
   render() {
+    let { todoList, todoInput } = this.state
     return (
       <div className="App">
-        <input type="text" value={this.state.todoInput} onChange={this.handleChange} placeholder="Write a new task" />
+        <input
+          type="text"
+          value={todoInput}
+          onChange={this.handleChange}
+          placeholder="Write a new task"
+        />
         <button onClick={this.onSubmit}>Add</button>
         <div className='todo-list'>
           <ul className='list'>
-            {this.state.todoList.map(todo => <li>{todo}</li>)}
+            {todoList.map(todo => <li>{todo}</li>)}
           </ul>
         </div>
       </div>
