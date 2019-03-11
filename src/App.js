@@ -1,25 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      todoList: [],
+      todoInput: ''
+    }
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      todoInput: e.target.value
+    })
+  }
+
+  onSubmit = () => {
+    if (this.state.todoInput !== '') {
+      this.setState({
+        todoList: [...this.state.todoList, this.state.todoInput]
+      })
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <input type="text" value={this.state.todoInput} onChange={this.handleChange} placeholder="Write a new task" />
+        <button onClick={this.onSubmit}>Add</button>
+        <div className='todo-list'>
+          <ul className='list'>
+            {this.state.todoList.map(todo => <li>{todo}</li>)}
+          </ul>
+        </div>
       </div>
     );
   }
