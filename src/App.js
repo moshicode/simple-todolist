@@ -10,16 +10,18 @@ class App extends Component {
     }
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({
       todoInput: e.target.value
     })
   }
 
-  onSubmit = () => {
+  onSubmit = e => {
+    e.preventDefault()
     if (this.state.todoInput !== '') {
       this.setState({
-        todoList: [...this.state.todoList, this.state.todoInput]
+        todoList: [...this.state.todoList, this.state.todoInput],
+        todoInput: ''
       })
     }
   }
@@ -37,7 +39,7 @@ class App extends Component {
         <button onClick={this.onSubmit}>Add</button>
         <div className='todo-list'>
           <ul className='list'>
-            {todoList.map(todo => <li>{todo}</li>)}
+            {todoList.map((todo, index) => <li key={index}>{todo}</li>)}
           </ul>
         </div>
       </div>
