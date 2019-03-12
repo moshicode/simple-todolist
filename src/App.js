@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
+import TodoForm from './components/TodoForm'
 import TodoCounter from './components/TodoCounter'
 import Todo from './components/Todo'
-import TodoForm from './components/TodoForm'
-
 
 class App extends Component {
   state = {
     todoList: [{ text: 'First Task', complete: false }],
   }
-
 
   addNewTodo = todo => {
     this.setState({
@@ -17,7 +15,7 @@ class App extends Component {
     })
   }
 
-  toggleComplete = (id) => {
+  toggleComplete = id => {
     this.setState({
       todoList: this.state.todoList.map((todo, indexOf) => {
         if (indexOf === id) {
