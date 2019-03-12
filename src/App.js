@@ -1,45 +1,49 @@
 import React, { Component } from 'react';
 import './App.css';
+import TodoCounter from './components/TodoCounter'
+import Todo from './components/Todo'
+import TodoForm from './components/TodoForm'
+
 
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      todoList: [{ text: 'First Task', taskCheck: true }],
-      todoInput: ''
-    }
+  state = {
+    todoList: [{ text: 'First Task', complete: false }],
   }
 
-  handleChange = e => {
+
+  addNewTodo = todo => {
     this.setState({
-      todoInput: e.target.value
+      todoList: [...this.state.todoList, todo],
     })
   }
 
-  onSubmit = e => {
-    e.preventDefault()
-    if (this.state.todoInput !== '') {
-      this.setState({
-        todoList: [...this.state.todoList, { text: this.state.todoInput, taskCheck: false }],
-        todoInput: ''
+  toggleComplete = (id) => {
+    this.setState({
+      todoList: this.state.todoList.map((todo, indexOf) => {
+        if (indexOf === id) {
+          return {
+            ...todo,
+            isComplete: !todo.isComplete
+          }
+        } else {
+          return todo
+        }
       })
-    }
+    })
   }
 
   render() {
-    let { todoList, todoInput } = this.state
+    let { todoList } = this.state
     return (
       <div className="App">
-        <input
-          type="text"
-          value={todoInput}
-          onChange={this.handleChange}
-          placeholder="Write a new task"
-        />
-        <button onClick={this.onSubmit}>Add</button>
+        <h1>TodoList</h1>
+        <TodoCounter todoList={todoList} />
+        <TodoForm addNewTodo={this.addNewTodo} />
         <div className='todo-list'>
           <ul className='list'>
-            {todoList.map((todo, index) => todo.taskCheck ? <li key={index} className="is-checked">{todo.text}</li> : <li key={index}>{todo.text}</li>)}
+            {todoList.map((todo, index) =>
+              <Todo key={index} todo={todo} toggleComplete={() => this.toggleComplete(index)} />
+            )}
           </ul>
         </div>
       </div>
@@ -48,3 +52,5 @@ class App extends Component {
 }
 
 export default App;
+
+
