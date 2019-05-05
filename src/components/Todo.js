@@ -6,6 +6,7 @@ const Todo = props => {
             textDecoration: props.todo.isComplete ? 'line-through' : ''
         }}
             onClick={props.toggleComplete}>{props.todo.text}
+            <button onClick={props.deleteTodo}>X</button>
         </li>
     )
 };

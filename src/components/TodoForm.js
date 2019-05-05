@@ -15,6 +15,7 @@ class TodoForm extends Component {
         e.preventDefault()
         if (this.state.text !== '') {
             this.props.addNewTodo({
+                id: this.props.getUniqueID(),
                 text: this.state.text,
                 isComplete: false
             })
