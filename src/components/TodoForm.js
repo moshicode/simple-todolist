@@ -12,7 +12,7 @@ class TodoForm extends Component {
     }
 
     handleSubmit = e => {
-        e.preventDefault()
+        // e.preventDefault()
         if (this.state.text !== '') {
             this.props.addNewTodo({
                 id: this.props.getUniqueID(),
@@ -23,6 +23,13 @@ class TodoForm extends Component {
         }
     }
 
+    handleKeyPress = e => {
+        if (e.key === 'Enter') {
+            console.log('enter')
+            this.handleSubmit()
+        }
+    }
+
     render() {
         return (
             <div>
@@ -30,6 +37,7 @@ class TodoForm extends Component {
                     type="text"
                     value={this.state.text}
                     onChange={this.handleChange}
+                    onKeyPress={this.handleKeyPress}
                     placeholder="Write a new task"
                 />
                 <button onClick={this.handleSubmit}>Add</button>

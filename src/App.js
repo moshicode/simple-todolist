@@ -13,7 +13,6 @@ class App extends Component {
     let ID
     if (this.state.todoList.length > 0) {
       ID = this.state.todoList[this.state.todoList.length - 1].id + 1
-      console.log(ID)
     } else {
       ID = 0
     }
@@ -42,7 +41,6 @@ class App extends Component {
   }
 
   deleteTodo = (index) => {
-    console.log(index)
     this.setState({
       todoList: this.state.todoList.splice(index, 1)
     })
