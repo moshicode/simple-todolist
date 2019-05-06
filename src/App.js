@@ -3,13 +3,16 @@ import './App.css';
 import TodoForm from './components/TodoForm'
 import TodoCounter from './components/TodoCounter'
 import Todo from './components/Todo'
+import moment from 'moment'
+
+
 
 class App extends Component {
   state = {
     todoList: [
-      { date: new Date(), id: 0, text: 'First Task', isComplete: false },
-      { date: new Date(), id: 1, text: 'This is todo number 2', isComplete: false },
-      { date: new Date(), id: 2, text: 'todo N.3 Misson complete', isComplete: true }
+      { date: moment(new Date()).format("DD-MM-YY"), id: 0, text: 'First Task', isComplete: false },
+      { date: moment(new Date()).format("DD-MM-YY"), id: 1, text: 'This is todo number 2', isComplete: false },
+      { date: moment(new Date()).format("DD-MM-YY"), id: 2, text: 'todo N.3 Misson complete', isComplete: true }
     ]
   }
 
@@ -53,6 +56,7 @@ class App extends Component {
   render() {
     let { todoList } = this.state
 
+    console.log(this.state)
     return (
       <div className="App">
         <div id="header">

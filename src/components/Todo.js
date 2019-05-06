@@ -1,9 +1,6 @@
 import React from 'react';
 
 const Todo = props => {
-    if (props.todoListLength === 0) {
-        return <div>There is nothing todo</div>
-    }
     return (
         <React.Fragment>
             <li>

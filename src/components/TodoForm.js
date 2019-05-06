@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 class TodoForm extends Component {
     state = {
@@ -14,7 +15,7 @@ class TodoForm extends Component {
     handleSubmit = () => {
         if (this.state.text !== '') {
             this.props.addNewTodo({
-                date: new Date(),
+                date: moment(new Date()).format("DD-MM-YY"),
                 id: this.props.getUniqueID(),
                 text: this.state.text,
                 isComplete: false
