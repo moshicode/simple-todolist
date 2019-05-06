@@ -1,10 +1,13 @@
 import React from 'react';
 
 const TodoCounter = props => {
+    let { todoList } = props
     return (
-        <div>
-            {props.todoList.filter(todo => todo.isComplete === true).length} tasks completed from {props.todoList.length}
-        </div>
+        <React.Fragment>
+            <div className="status">
+                completed: {todoList.filter(todo => todo.isComplete === true).length} | todos {todoList.length}
+            </div>
+        </React.Fragment>
     )
 };
 

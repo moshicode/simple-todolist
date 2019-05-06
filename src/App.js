@@ -50,8 +50,10 @@ class App extends Component {
     let { todoList } = this.state
     return (
       <div className="App">
-        <h1>TodoList</h1>
-        <TodoCounter todoList={todoList} />
+        <div id="header">
+          <h1>todolist</h1>
+          <TodoCounter todoList={todoList} />
+        </div>
         <TodoForm addNewTodo={this.addNewTodo} getUniqueID={this.getUniqueID} />
         <div className='todo-list'>
           <ul className='list'>
