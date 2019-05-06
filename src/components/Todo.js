@@ -1,13 +1,16 @@
 import React from 'react';
 
 const Todo = props => {
+    console.log(props)
     return (
-        <li style={{
-            textDecoration: props.todo.isComplete ? 'line-through' : ''
-        }}
-            onClick={props.toggleComplete}>{props.todo.text}
-            <i class="fas fa-times" onClick={props.deleteTodo}></i>
-        </li>
+        <React.Fragment>
+            <li>
+                <p onClick={props.toggleComplete}
+                    style={{ textDecoration: props.todo.isComplete ? 'line-through' : '' }}>{props.todo.text}
+                </p>
+                <i className="fas fa-times" onClick={props.deleteTodo}></i>
+            </li>
+        </React.Fragment>
     )
 };
 

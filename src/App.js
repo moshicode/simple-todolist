@@ -6,7 +6,11 @@ import Todo from './components/Todo'
 
 class App extends Component {
   state = {
-    todoList: [{ id: 0, text: 'First Task', complete: false }]
+    todoList: [
+      { date: new Date(), id: 0, text: 'First Task', isComplete: false },
+      { date: new Date(), id: 1, text: 'This is todo number 2', isComplete: false },
+      { date: new Date(), id: 2, text: 'todo N.3 Misson complete', isComplete: true }
+    ]
   }
 
   getUniqueID = () => {
@@ -40,9 +44,9 @@ class App extends Component {
     })
   }
 
-  deleteTodo = (index) => {
+  deleteTodo = id => {
     this.setState({
-      todoList: this.state.todoList.splice(index, 1)
+      todoList: this.state.todoList.filter(todo => todo.id !== id)
     })
   }
 
@@ -62,7 +66,7 @@ class App extends Component {
                 key={index}
                 todo={todo}
                 toggleComplete={() => this.toggleComplete(todo.id)}
-                deleteTodo={() => this.deleteTodo(index)}
+                deleteTodo={() => this.deleteTodo(todo.id)}
               />
             )}
           </ul>

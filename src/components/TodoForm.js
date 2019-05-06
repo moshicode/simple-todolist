@@ -14,7 +14,7 @@ class TodoForm extends Component {
     handleSubmit = () => {
         if (this.state.text !== '') {
             this.props.addNewTodo({
-                date: new Date(),
+                // date: new Date(),
                 id: this.props.getUniqueID(),
                 text: this.state.text,
                 isComplete: false
