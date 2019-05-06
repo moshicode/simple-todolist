@@ -52,6 +52,7 @@ class App extends Component {
 
   render() {
     let { todoList } = this.state
+
     return (
       <div className="App">
         <div id="header">
@@ -61,10 +62,12 @@ class App extends Component {
         <TodoForm addNewTodo={this.addNewTodo} getUniqueID={this.getUniqueID} />
         <div className='todo-list'>
           <ul className='list'>
+            {!todoList.length && (<li className="not-found">There is nothing todo!</li>)}
             {todoList.map((todo, index) =>
               <Todo
                 key={index}
                 todo={todo}
+                todoListLength={this.state.todoList.length}
                 toggleComplete={() => this.toggleComplete(todo.id)}
                 deleteTodo={() => this.deleteTodo(todo.id)}
               />
