@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Todo = props => {
-    console.log(props.todoListLength)
     if (props.todoListLength === 0) {
         return <div>There is nothing todo</div>
     }
