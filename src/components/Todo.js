@@ -4,7 +4,8 @@ const Todo = props => {
     return (
         <React.Fragment>
             <li>
-                <p onClick={props.toggleComplete}
+                <input type="checkbox" checked={props.todo.isComplete} onChange={props.toggleComplete} />
+                <p
                     style={{ textDecoration: props.todo.isComplete ? 'line-through' : '' }}>{props.todo.text}
                 </p>
                 <i className="fas fa-times" onClick={props.deleteTodo}></i>

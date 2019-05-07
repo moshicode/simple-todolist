@@ -5,8 +5,6 @@ import TodoCounter from './components/TodoCounter'
 import Todo from './components/Todo'
 import moment from 'moment'
 
-
-
 class App extends Component {
   state = {
     todoList: [
@@ -47,6 +45,7 @@ class App extends Component {
     })
   }
 
+
   deleteTodo = id => {
     this.setState({
       todoList: this.state.todoList.filter(todo => todo.id !== id)
@@ -55,8 +54,6 @@ class App extends Component {
 
   render() {
     let { todoList } = this.state
-
-    console.log(this.state)
     return (
       <div className="App">
         <div id="header">
